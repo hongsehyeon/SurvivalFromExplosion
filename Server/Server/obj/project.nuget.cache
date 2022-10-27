@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8NDiDe56Lp4vR05hFdBaXXM6wuvNAMVrMksLAlYGe4OGDGkuQxKg8J/K5cDYSHtuK47N2gCsBjtQc/R7rBgz8A==",
+  "dgSpecHash": "VzLI7blClvC20x/u8l1K2gLsD9unJdkbAQFFSteTZelUpCXmF8FHGk9Xr3CQfOZgeh41F8HYAffv1AwoMzDCGw==",
   "success": true,
   "projectFilePath": "C:\\workspace\\Unity\\SurvivalFromExplosion\\Server\\Server\\Server.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pelin\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512"
+  ],
   "logs": []
 }

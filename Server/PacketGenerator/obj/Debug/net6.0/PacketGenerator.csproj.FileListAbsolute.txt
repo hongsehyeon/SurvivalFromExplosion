@@ -1,0 +1,15 @@
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\bin\Debug\net6.0\PacketGenerator.exe
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\bin\Debug\net6.0\PacketGenerator.deps.json
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\bin\Debug\net6.0\PacketGenerator.runtimeconfig.json
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\bin\Debug\net6.0\PacketGenerator.dll
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\bin\Debug\net6.0\PacketGenerator.pdb
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.csproj.AssemblyReference.cache
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.AssemblyInfoInputs.cache
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.AssemblyInfo.cs
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.csproj.CoreCompileInputs.cache
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.dll
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\refint\PacketGenerator.dll
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.pdb
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\PacketGenerator.genruntimeconfig.cache
+C:\workspace\Unity\SurvivalFromExplosion\Server\PacketGenerator\obj\Debug\net6.0\ref\PacketGenerator.dll

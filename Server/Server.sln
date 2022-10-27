@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{4249A90F-AF96-44CE-9F37-676C946F2AE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{4249A90F-AF96-44CE-9F37-676C946F2AE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketGenerator", "PacketGenerator\PacketGenerator.csproj", "{E0C2D908-F580-44FE-90C5-36952E52C28A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{62F490F9-4CF5-4DE7-A212-595F286C348D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerCore", "ServerCore\ServerCore.csproj", "{40FAA767-EF80-4970-8B84-83A152C1CC5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,20 @@ Global
 		{4249A90F-AF96-44CE-9F37-676C946F2AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4249A90F-AF96-44CE-9F37-676C946F2AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4249A90F-AF96-44CE-9F37-676C946F2AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0C2D908-F580-44FE-90C5-36952E52C28A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0C2D908-F580-44FE-90C5-36952E52C28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0C2D908-F580-44FE-90C5-36952E52C28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0C2D908-F580-44FE-90C5-36952E52C28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40FAA767-EF80-4970-8B84-83A152C1CC5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40FAA767-EF80-4970-8B84-83A152C1CC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40FAA767-EF80-4970-8B84-83A152C1CC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40FAA767-EF80-4970-8B84-83A152C1CC5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0C2D908-F580-44FE-90C5-36952E52C28A} = {62F490F9-4CF5-4DE7-A212-595F286C348D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD6DE81C-EBA7-429F-AFF7-1D9A25B9DFE4}

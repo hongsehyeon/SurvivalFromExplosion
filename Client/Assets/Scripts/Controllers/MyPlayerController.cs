@@ -23,7 +23,6 @@ public class MyPlayerController : PlayerController
         MousePos = Input.mousePosition;
         Vector2 movePos = Camera.main.ScreenToWorldPoint(MousePos);
         MovePos = movePos;
-        Debug.Log(movePos);
 
         PosInfo.PosX = movePos.x;
         PosInfo.PosY = movePos.y;
