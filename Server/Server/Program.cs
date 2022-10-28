@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading;
+﻿using System.Net;
 using Server.Game;
 using ServerCore;
 
@@ -28,7 +25,6 @@ namespace Server
             GameRoom room = RoomManager.Instance.Add(1);
             TickRoom(room, 50);
 
-            // DNS (Domain Name System)
             string host = Dns.GetHostName();
             IPHostEntry ipHost = Dns.GetHostEntry(host);
             IPAddress ipAddr = ipHost.AddressList[0];
@@ -37,13 +33,9 @@ namespace Server
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
             Console.WriteLine("Listening...");
 
-            //FlushRoom();
-            //JobTimer.Instance.Push(FlushRoom);
-
-            // TODO
             while (true)
             {
-                //JobTimer.Instance.Flush();
+                
                 Thread.Sleep(100);
             }
         }
