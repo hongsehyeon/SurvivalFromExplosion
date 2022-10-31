@@ -3,18 +3,27 @@ using Google.Protobuf.Protocol;
 using Server;
 using Server.Game;
 using ServerCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 class PacketHandler
 {
+	public static void C_AddRoomHandler(PacketSession session, IMessage packet)
+	{
+		C_AddRoom addRoomPacket = packet as C_AddRoom;
+
+		// TODO : 룸 생성 코드
+	}
+
+    public static void C_RefreshRoomHandler(PacketSession session, IMessage packet)
+	{
+		C_RefreshRoom refreshRoomPacket = packet as C_RefreshRoom;
+
+		// TODO : 룸 리스트 정보 돌려주기
+	}
+
 	public static void C_MoveHandler(PacketSession session, IMessage packet)
 	{
 		C_Move movePacket = packet as C_Move;
 		ClientSession clientSession = session as ClientSession;
-
-		//Console.WriteLine($"C_Move ({movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY})");
 
 		Player player = clientSession.MyPlayer;
 		if (player == null)

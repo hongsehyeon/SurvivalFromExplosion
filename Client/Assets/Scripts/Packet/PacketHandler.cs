@@ -1,12 +1,24 @@
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using ServerCore;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 class PacketHandler
 {
+    public static void S_AddRoomHandler(PacketSession session, IMessage packet)
+    {
+        S_AddRoom addRoomPacket = packet as S_AddRoom;
+        
+        // TODO : 내가 만든 룸에 입장
+    }
+
+    public static void S_RefreshRoomHandler(PacketSession session, IMessage packet)
+    {
+        S_RefreshRoom refreshRoomPacket = packet as S_RefreshRoom;
+
+        // TODO : 룸 리스트 UI 새로고침
+    }
+
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
         S_EnterGame enterGamePacket = packet as S_EnterGame;
