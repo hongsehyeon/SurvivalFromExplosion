@@ -6,6 +6,7 @@ using UnityEngine;
 public class ObjectManager
 {
     public MyPlayerController MyPlayer { get; set; }
+    public Exploder Exploder { get; set; }
     Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
 
     public void Add(ObjectInfo info, bool myPlayer = false)

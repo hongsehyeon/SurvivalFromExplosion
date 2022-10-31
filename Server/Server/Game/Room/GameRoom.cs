@@ -9,16 +9,21 @@ namespace Server.Game
     public class GameRoom : JobSerializer
     {
         public int RoomId { get; set; }
-
         Dictionary<int, Player> _players = new Dictionary<int, Player>();
+        bool _isExplode = false;
 
-        public void Init(int mapId)
+        public void Init()
         {
             
         }
 
         public void Update()
         {
+            if (!_isExplode)
+            {
+                _isExplode = true;
+                PushAfter(3000, Explode, 1);
+            }
 
             Flush();
         }
@@ -102,6 +107,15 @@ namespace Server.Game
             resMovePacket.PosInfo = movePacket.PosInfo;
 
             Broadcast(resMovePacket);
+        }
+
+        public void Explode(int patternId)
+        {
+            S_Explode explodePacket = new S_Explode();
+            explodePacket.PatternId = patternId;
+
+            Broadcast(explodePacket);
+            _isExplode = false;
         }
 
         public Player FindPlayer(Func<GameObject, bool> condition)

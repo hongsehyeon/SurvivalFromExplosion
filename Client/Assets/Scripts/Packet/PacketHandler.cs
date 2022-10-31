@@ -69,6 +69,17 @@ class PacketHandler
             pc.OnDead();
         }
     }
+
+    public static void S_ExplodeHandler(PacketSession session, IMessage packet)
+    {
+        S_Explode explodePacket = packet as S_Explode;
+
+        Exploder exploder = Managers.Object.Exploder;
+        if (exploder != null)
+        {
+            exploder.Explode(explodePacket.PatternId);
+        }
+    }
 }
 
 

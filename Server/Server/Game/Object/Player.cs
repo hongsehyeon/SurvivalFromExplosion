@@ -9,9 +9,9 @@ namespace Server.Game
 	{
 		public ClientSession Session { get; set; }
 
-		public override void OnDead(GameObject attacker)
+		public override void OnDead()
 		{
-			base.OnDead(attacker);
+			base.OnDead();
 		}
 	}
 }
