@@ -2,6 +2,7 @@ using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using ServerCore;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 class PacketHandler
 {
