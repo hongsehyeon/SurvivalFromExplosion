@@ -5,15 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class StartScene : MonoBehaviour
 {
+    public GameObject Title;
+    public GameObject NamePanel;
+
     private void Start()
     {
-        StartCoroutine(ManagerInit());
+        StartCoroutine(ShowNamePanel());
     }
 
-    private IEnumerator ManagerInit()
+    public void ManagerInit()
     {
-        yield return new WaitForSeconds(5f);
         if (Managers.Network == null) { }
         SceneManager.LoadScene("Game");
+    }
+
+    private IEnumerator ShowNamePanel()
+    {
+        yield return new WaitForSeconds(5);
+        Title.SetActive(false);
+        NamePanel.SetActive(true);
     }
 }
