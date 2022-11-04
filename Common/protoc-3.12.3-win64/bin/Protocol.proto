@@ -5,33 +5,37 @@ import "google/protobuf/timestamp.proto";
 option csharp_namespace = "Google.Protobuf.Protocol";
 
 enum MsgId {
-  C_ADD_ROOM = 0;
-  S_ADD_ROOM = 1;
-  C_REFRESH_ROOM = 2;
-  S_REFRESH_ROOM = 3;
-  S_ENTER_GAME = 4;
-  S_LEAVE_GAME = 5;
-  S_SPAWN = 6;
-  S_DESPAWN = 7;
-  C_MOVE = 8;
-  S_MOVE = 9;
-  S_DIE = 10;
-  S_EXPLODE = 11;
+  S_ENTER_LOBBY = 0;
+  C_CREATE_ROOM = 1;
+  C_REFRESH_ROOM_LIST = 2;
+  S_REFRESH_ROOM_LIST = 3;
+  C_ENTER_GAME = 4;
+  S_ENTER_GAME = 5;
+  S_LEAVE_GAME = 6;
+  S_SPAWN = 7;
+  S_DESPAWN = 8;
+  C_MOVE = 9;
+  S_MOVE = 10;
+  S_DIE = 11;
+  S_EXPLODE = 12;
 }
 
-message C_AddRoom {
+message S_EnterLobby {
+}
+
+message C_CreateRoom {
   RoomInfo roomInfo = 1;
 }
 
-message S_AddRoom {
-  RoomInfo roomInfo = 1;
+message C_RefreshRoomList {
 }
 
-message C_RefreshRoom {
-}
-
-message S_RefreshRoom {
+message S_RefreshRoomList {
   repeated RoomInfo rooms = 1;
+}
+
+message C_EnterGame {
+  int32 roomId = 1;
 }
 
 message S_EnterGame {
@@ -67,8 +71,8 @@ message S_Explode {
 }
 
 message RoomInfo {
-  int32 roomId = 1;
-  string roomName = 2;
+  string roomName = 1;
+  int32 maxPlayer = 2;
   int32 playerCount = 3;
 }
 

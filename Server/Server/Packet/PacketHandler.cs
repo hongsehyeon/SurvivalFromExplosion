@@ -6,21 +6,37 @@ using ServerCore;
 
 class PacketHandler
 {
-	public static void C_AddRoomHandler(PacketSession session, IMessage packet)
+	public static void C_CreateRoomHandler(PacketSession session, IMessage packet)
 	{
-		C_AddRoom addRoomPacket = packet as C_AddRoom;
-
+		C_CreateRoom addRoomPacket = packet as C_CreateRoom;
+		
 		// TODO : 룸 생성 코드
 	}
 
-    public static void C_RefreshRoomHandler(PacketSession session, IMessage packet)
+    public static void C_RefreshRoomListHandler(PacketSession session, IMessage packet)
 	{
-		C_RefreshRoom refreshRoomPacket = packet as C_RefreshRoom;
-
 		// TODO : 룸 리스트 정보 돌려주기
+		ClientSession clientSession = session as ClientSession;
+
+		Lobby lobby = clientSession.Lobby;
+
+		if (lobby == null)
+			return;
+
+		lobby.Push(lobby.RefreshRoomList, clientSession.SessionId);
 	}
 
-	public static void C_MoveHandler(PacketSession session, IMessage packet)
+	public static void C_EnterGameHandler(PacketSession session, IMessage packet)
+	{
+		ClientSession clientSession = session as ClientSession;
+
+		if (clientSession == null)
+			return;
+
+		C_EnterGame addGamePacket = packet as C_EnterGame;
+	}
+
+    public static void C_MoveHandler(PacketSession session, IMessage packet)
 	{
 		C_Move movePacket = packet as C_Move;
 		ClientSession clientSession = session as ClientSession;

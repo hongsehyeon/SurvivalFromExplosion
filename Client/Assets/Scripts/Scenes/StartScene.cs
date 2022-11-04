@@ -10,7 +10,8 @@ public class StartScene : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ShowNamePanel());
+        ManagerInit();
+        //StartCoroutine(ShowNamePanel());
     }
 
     public void ManagerInit()

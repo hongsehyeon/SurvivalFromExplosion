@@ -10,6 +10,7 @@ namespace Server
 	public class ClientSession : PacketSession
 	{
 		public Player MyPlayer { get; set; }
+		public Lobby Lobby { get; set; }
 		public int SessionId { get; set; }
 
 		public void Send(IMessage packet)
@@ -28,17 +29,9 @@ namespace Server
 		{
 			Console.WriteLine($"OnConnected : {endPoint}");
 
-			MyPlayer = ObjectManager.Instance.Add();
-			{
-				MyPlayer.Info.Name = $"Player_{MyPlayer.Info.ObjectId}";
-				MyPlayer.Info.PosInfo.PosX = 0;
-				MyPlayer.Info.PosInfo.PosY = 0;
+			Lobby = Lobby.Instance;
 
-				MyPlayer.Session = this;
-			}
-
-			GameRoom room = RoomManager.Instance.Find(1);
-			room.Push(room.EnterGame, MyPlayer);
+			Lobby.Push(Lobby.EnterLobby, this);
 		}
 
 		public override void OnRecvPacket(ArraySegment<byte> buffer)

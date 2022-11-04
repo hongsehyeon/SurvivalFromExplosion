@@ -9,7 +9,9 @@ namespace Server.Game
     public class GameRoom : JobSerializer
     {
         public int RoomId { get; set; }
+        public RoomInfo RoomInfo { get; set; }
         Dictionary<int, Player> _players = new Dictionary<int, Player>();
+
         bool _isExplode = false;
 
         public void Init()
@@ -19,11 +21,11 @@ namespace Server.Game
 
         public void Update()
         {
-            if (!_isExplode)
-            {
-                _isExplode = true;
-                PushAfter(3000, Explode, 1);
-            }
+            //if (!_isExplode)
+            //{
+            //    _isExplode = true;
+            //    PushAfter(3000, Explode, 1);
+            //}
 
             Flush();
         }

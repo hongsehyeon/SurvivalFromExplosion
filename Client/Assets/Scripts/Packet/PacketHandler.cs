@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 class PacketHandler
 {
-    public static void S_AddRoomHandler(PacketSession session, IMessage packet)
+    public static void S_EnterLobbyHandler(PacketSession session, IMessage packet)
     {
-        S_AddRoom addRoomPacket = packet as S_AddRoom;
-        
-        // TODO : 내가 만든 룸에 입장
+        S_EnterLobby enterLobbyPacket = packet as S_EnterLobby;
+
+        // TODO : 로비 입장
     }
 
-    public static void S_RefreshRoomHandler(PacketSession session, IMessage packet)
+    public static void S_RefreshRoomListHandler(PacketSession session, IMessage packet)
     {
-        S_RefreshRoom refreshRoomPacket = packet as S_RefreshRoom;
+        S_RefreshRoomList refreshRoomPacket = packet as S_RefreshRoomList;
 
         // TODO : 룸 리스트 UI 새로고침
     }

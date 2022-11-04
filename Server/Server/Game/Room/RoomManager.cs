@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Protocol;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace Server.Game
 		Dictionary<int, GameRoom> _rooms = new Dictionary<int, GameRoom>();
 		int _roomId = 1;
 
-		public GameRoom Add()
+		public GameRoom Add(RoomInfo roomInfo)
 		{
 			GameRoom gameRoom = new GameRoom();
 			gameRoom.Push(gameRoom.Init);
@@ -20,6 +21,7 @@ namespace Server.Game
 			lock (_lock)
 			{
 				gameRoom.RoomId = _roomId;
+				gameRoom.RoomInfo = roomInfo;
 				_rooms.Add(_roomId, gameRoom);
 				_roomId++;
 			}
@@ -45,6 +47,15 @@ namespace Server.Game
 
 				return null;
 			}
+		}
+
+		public List<GameRoom> GetRoomList()
+		{
+			List<GameRoom> roomList = new List<GameRoom>();
+			foreach (GameRoom room in _rooms.Values)
+				roomList.Add(room);
+
+			return roomList;
 		}
 	}
 }
