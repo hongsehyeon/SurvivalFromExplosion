@@ -22,9 +22,6 @@ namespace Server
 
         static void Main(string[] args)
         {
-            GameRoom room = RoomManager.Instance.Add();
-            TickRoom(room, 50);
-
             string host = Dns.GetHostName();
             IPHostEntry ipHost = Dns.GetHostEntry(host);
             IPAddress ipAddr = ipHost.AddressList[0];

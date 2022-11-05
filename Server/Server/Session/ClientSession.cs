@@ -31,7 +31,7 @@ namespace Server
 
 			Lobby = Lobby.Instance;
 
-			Lobby.Push(Lobby.EnterLobby, this);
+			Lobby.Push(Lobby.EnterLobby, SessionId);
 		}
 
 		public override void OnRecvPacket(ArraySegment<byte> buffer)

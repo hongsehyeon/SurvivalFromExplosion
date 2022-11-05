@@ -9,8 +9,14 @@ class PacketHandler
 	public static void C_CreateRoomHandler(PacketSession session, IMessage packet)
 	{
 		C_CreateRoom addRoomPacket = packet as C_CreateRoom;
-		
-		// TODO : 룸 생성 코드
+		ClientSession clientSession = session as ClientSession;
+
+		Lobby lobby = clientSession.Lobby;
+
+		if (lobby == null)
+			return;
+
+		lobby.Push(lobby.CreateRoom, addRoomPacket.RoomInfo);
 	}
 
     public static void C_RefreshRoomListHandler(PacketSession session, IMessage packet)
@@ -28,12 +34,15 @@ class PacketHandler
 
 	public static void C_EnterGameHandler(PacketSession session, IMessage packet)
 	{
+		C_EnterGame enterGamePacket = packet as C_EnterGame;
 		ClientSession clientSession = session as ClientSession;
 
-		if (clientSession == null)
+		Lobby lobby = clientSession.Lobby;
+
+		if (lobby == null)
 			return;
 
-		C_EnterGame addGamePacket = packet as C_EnterGame;
+		lobby.Push(lobby.TryEnterGame, enterGamePacket.RoomId, clientSession.SessionId);
 	}
 
     public static void C_MoveHandler(PacketSession session, IMessage packet)

@@ -13,8 +13,10 @@ namespace Server.Game
             _sessions.Clear();
         }
 
-        public void EnterLobby(ClientSession session)
+        public void EnterLobby(int sessionId)
         {
+            ClientSession session = SessionManager.Instance.Find(sessionId);
+
             if (session == null)
                 return;
 
@@ -22,22 +24,34 @@ namespace Server.Game
             session.Send(new S_EnterLobby());
         }
 
+        public void CreateRoom(RoomInfo roomInfo)
+        {
+            GameRoom newRoom = RoomManager.Instance.Add(roomInfo);
+            newRoom.Push(newRoom.Init);
+
+            S_RefreshRoomList roomListPacket = MakeRoomListPacket();
+            BroadCast(roomListPacket);
+        }
+
         public void RefreshRoomList(int sessionId)
         {
-            S_RefreshRoomList roomListPacket = new S_RefreshRoomList();
-
-            List<GameRoom> roomList = RoomManager.Instance.GetRoomList();
-            foreach (GameRoom room in roomList)
-                roomListPacket.Rooms.Add(room.RoomInfo);
-
+            S_RefreshRoomList roomListPacket = MakeRoomListPacket();
             ClientSession session = FindSession(sessionId);
+
+            if (session == null)
+                return;
+
             session.Send(roomListPacket);
         }
 
         public void TryEnterGame(int roomId, int sessionId)
         {
             GameRoom room = RoomManager.Instance.Find(roomId);
+            
             if (room == null)
+                return;
+
+            if (room.RoomInfo.PlayerCount == room.RoomInfo.MaxPlayer)
                 return;
 
             ClientSession session = FindSession(sessionId);
@@ -56,10 +70,8 @@ namespace Server.Game
         public ClientSession FindSession(int sessionId)
         {
             ClientSession session = null;
-            if (_sessions.TryGetValue(sessionId, out session))
-                return session;
-
-            return null;
+            _sessions.TryGetValue(sessionId, out session);
+            return session;
         }
 
         public void BroadCast(IMessage packet)
@@ -68,6 +80,17 @@ namespace Server.Game
             {
                 session.Send(packet);
             }
+        }
+
+        S_RefreshRoomList MakeRoomListPacket()
+        {
+            S_RefreshRoomList roomListPacket = new S_RefreshRoomList();
+
+            List<GameRoom> roomList = RoomManager.Instance.GetRoomList();
+            foreach (GameRoom room in roomList)
+                roomListPacket.Rooms.Add(room.RoomInfo);
+
+            return roomListPacket;
         }
     }
 }

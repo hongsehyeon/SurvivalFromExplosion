@@ -36,9 +36,7 @@ class PacketHandler
     {
         S_Spawn spawnPacket = packet as S_Spawn;
         foreach (ObjectInfo obj in spawnPacket.Objects)
-        {
             Managers.Object.Add(obj, myPlayer: false);
-        }
     }
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)
