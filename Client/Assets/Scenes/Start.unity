@@ -247,7 +247,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 806108822}
         m_TargetAssemblyTypeName: StartScene, Assembly-CSharp
-        m_MethodName: ManagerInit
+        m_MethodName: OnClickStartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -884,6 +884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: {fileID: 1677193229}
   NamePanel: {fileID: 1496845802}
+  NameInputField: {fileID: 2109098258}
 --- !u!1 &861276169
 GameObject:
   m_ObjectHideFlags: 0

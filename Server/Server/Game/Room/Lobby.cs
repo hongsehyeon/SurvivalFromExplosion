@@ -3,7 +3,7 @@ using Google.Protobuf.Protocol;
 
 namespace Server.Game
 {
-    public class Lobby : JobSerializer
+    public class Lobby
     {
         public static Lobby Instance { get; } = new Lobby();
         Dictionary<int, ClientSession> _sessions = new Dictionary<int, ClientSession>();
@@ -16,21 +16,28 @@ namespace Server.Game
         public void EnterLobby(int sessionId)
         {
             ClientSession session = SessionManager.Instance.Find(sessionId);
-
+            
             if (session == null)
                 return;
-
+            
             _sessions.Add(session.SessionId, session);
-            session.Send(new S_EnterLobby());
+
+            S_EnterLobby enterLobbyPacket = new S_EnterLobby();
+            session.Send(enterLobbyPacket);
+
+            S_RefreshRoomList roomListPacket = MakeRoomListPacket();
+            session.Send(roomListPacket);
         }
 
-        public void CreateRoom(RoomInfo roomInfo)
+        public void CreateRoom(RoomInfo roomInfo, int sessionId)
         {
             GameRoom newRoom = RoomManager.Instance.Add(roomInfo);
             newRoom.Push(newRoom.Init);
 
             S_RefreshRoomList roomListPacket = MakeRoomListPacket();
             BroadCast(roomListPacket);
+
+            TryEnterGame(newRoom.RoomId, sessionId);
         }
 
         public void RefreshRoomList(int sessionId)

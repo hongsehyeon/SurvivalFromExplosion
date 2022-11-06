@@ -16,7 +16,7 @@ class PacketHandler
 		if (lobby == null)
 			return;
 
-		lobby.Push(lobby.CreateRoom, addRoomPacket.RoomInfo);
+		lobby.CreateRoom(addRoomPacket.RoomInfo, clientSession.SessionId);
 	}
 
     public static void C_RefreshRoomListHandler(PacketSession session, IMessage packet)
@@ -29,7 +29,7 @@ class PacketHandler
 		if (lobby == null)
 			return;
 
-		lobby.Push(lobby.RefreshRoomList, clientSession.SessionId);
+		lobby.RefreshRoomList(clientSession.SessionId);
 	}
 
 	public static void C_EnterGameHandler(PacketSession session, IMessage packet)
@@ -42,7 +42,7 @@ class PacketHandler
 		if (lobby == null)
 			return;
 
-		lobby.Push(lobby.TryEnterGame, enterGamePacket.RoomId, clientSession.SessionId);
+		lobby.TryEnterGame(enterGamePacket.RoomId, clientSession.SessionId);
 	}
 
     public static void C_MoveHandler(PacketSession session, IMessage packet)

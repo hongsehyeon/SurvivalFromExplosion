@@ -10,7 +10,7 @@ class PacketHandler
     {
         S_EnterLobby enterLobbyPacket = packet as S_EnterLobby;
 
-        // TODO : 로비 입장
+        SceneManager.LoadScene("Lobby");
     }
 
     public static void S_RefreshRoomListHandler(PacketSession session, IMessage packet)
@@ -18,10 +18,12 @@ class PacketHandler
         S_RefreshRoomList refreshRoomPacket = packet as S_RefreshRoomList;
 
         // TODO : 룸 리스트 UI 새로고침
+        Debug.Log("새로고침");
     }
 
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
+        Debug.Log("게임 참가");
         S_EnterGame enterGamePacket = packet as S_EnterGame;
         Managers.Object.Add(enterGamePacket.Player, myPlayer: true);
     }
