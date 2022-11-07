@@ -38,7 +38,7 @@ namespace Server.Game
             Player player = gameObject as Player;
             if (player == null)
                 return;
-
+            
             _players.Add(player.Id, player);
             player.Room = this;
 
@@ -47,7 +47,7 @@ namespace Server.Game
                 S_EnterGame enterPacket = new S_EnterGame();
                 enterPacket.Player = player.Info;
                 player.Session.Send(enterPacket);
-
+                
                 S_Spawn spawnPacket = new S_Spawn();
                 foreach (Player p in _players.Values)
                 {

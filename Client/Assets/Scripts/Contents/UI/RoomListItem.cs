@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Google.Protobuf.Protocol;
 using TMPro;
@@ -18,10 +16,9 @@ public class RoomListItem : MonoBehaviour
 
     public void OnClickRoom()
     {
-        Debug.Log("πÊ ¿‘¿Â");
         C_EnterGame enterGamePacket = new C_EnterGame();
-        enterGamePacket.RoomId = RoomInfo.RoomId;
-
+        enterGamePacket.RoomId = RoomInfo.RoomId + 1;
+        Debug.Log($"{RoomInfo.RoomId}, {RoomInfo.RoomName}, {RoomInfo.MaxPlayer}");
         Managers.Network.Send(enterGamePacket);
     }
 }

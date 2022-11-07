@@ -33,6 +33,7 @@ namespace Server.Game
         {
             GameRoom newRoom = RoomManager.Instance.Add(roomInfo);
             newRoom.Push(newRoom.Init);
+            Program.TickRoom(newRoom);
 
             S_RefreshRoomList roomListPacket = MakeRoomListPacket();
             BroadCast(roomListPacket);

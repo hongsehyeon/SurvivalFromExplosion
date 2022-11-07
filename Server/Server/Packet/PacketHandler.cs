@@ -36,7 +36,7 @@ class PacketHandler
 	{
 		C_EnterGame enterGamePacket = packet as C_EnterGame;
 		ClientSession clientSession = session as ClientSession;
-
+		
 		Lobby lobby = clientSession.Lobby;
 
 		if (lobby == null)
