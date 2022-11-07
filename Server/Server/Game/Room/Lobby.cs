@@ -72,6 +72,8 @@ namespace Server.Game
             }
 
             room.Push(room.EnterGame, session.MyPlayer);
+
+            _sessions.Remove(sessionId);
         }
 
         public ClientSession FindSession(int sessionId)
@@ -89,7 +91,7 @@ namespace Server.Game
             }
         }
 
-        S_RefreshRoomList MakeRoomListPacket()
+        private S_RefreshRoomList MakeRoomListPacket()
         {
             S_RefreshRoomList roomListPacket = new S_RefreshRoomList();
 

@@ -14,7 +14,7 @@ public class StartScene : MonoBehaviour
         if (PlayerPrefs.GetString("PlayerName") == "")
             StartCoroutine(ShowNamePanel());
         else
-            StartCoroutine(ManagerInit());
+            StartCoroutine(ManagerInit(4));
     }
 
     public void OnClickStartButton()
@@ -27,13 +27,13 @@ public class StartScene : MonoBehaviour
             return;
         }
 
-        StartCoroutine(ManagerInit());
+        StartCoroutine(ManagerInit(0));
     }
 
-    private IEnumerator ManagerInit()
+    private IEnumerator ManagerInit(int seconds)
     {
+        yield return new WaitForSeconds(seconds);
         if (Managers.Network == null) { }
-        yield return null;
     }
 
     private IEnumerator ShowNamePanel()

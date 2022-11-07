@@ -71,9 +71,10 @@ message S_Explode {
 }
 
 message RoomInfo {
-  string roomName = 1;
-  int32 maxPlayer = 2;
-  int32 playerCount = 3;
+  int32 roomId = 1;
+  string roomName = 2;
+  int32 maxPlayer = 3;
+  int32 playerCount = 4;
 }
 
 message ObjectInfo {

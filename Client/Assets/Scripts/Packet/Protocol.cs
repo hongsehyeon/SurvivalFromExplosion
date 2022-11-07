@@ -36,17 +36,18 @@ namespace Google.Protobuf.Protocol {
             "bmZvGAEgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIkMKBlNfTW92ZRIQ",
             "CghvYmplY3RJZBgBIAEoBRInCgdwb3NJbmZvGAIgASgLMhYuUHJvdG9jb2wu",
             "UG9zaXRpb25JbmZvIhkKBVNfRGllEhAKCG9iamVjdElkGAEgASgFIh4KCVNf",
-            "RXhwbG9kZRIRCglwYXR0ZXJuSWQYASABKAUiRAoIUm9vbUluZm8SEAoIcm9v",
-            "bU5hbWUYASABKAkSEQoJbWF4UGxheWVyGAIgASgFEhMKC3BsYXllckNvdW50",
-            "GAMgASgFIlUKCk9iamVjdEluZm8SEAoIb2JqZWN0SWQYASABKAUSDAoEbmFt",
-            "ZRgCIAEoCRInCgdwb3NJbmZvGAMgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25J",
-            "bmZvIioKDFBvc2l0aW9uSW5mbxIMCgRwb3NYGAEgASgCEgwKBHBvc1kYAiAB",
-            "KAIq4wEKBU1zZ0lkEhEKDVNfRU5URVJfTE9CQlkQABIRCg1DX0NSRUFURV9S",
-            "T09NEAESFwoTQ19SRUZSRVNIX1JPT01fTElTVBACEhcKE1NfUkVGUkVTSF9S",
-            "T09NX0xJU1QQAxIQCgxDX0VOVEVSX0dBTUUQBBIQCgxTX0VOVEVSX0dBTUUQ",
-            "BRIQCgxTX0xFQVZFX0dBTUUQBhILCgdTX1NQQVdOEAcSDQoJU19ERVNQQVdO",
-            "EAgSCgoGQ19NT1ZFEAkSCgoGU19NT1ZFEAoSCQoFU19ESUUQCxINCglTX0VY",
-            "UExPREUQDEIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "RXhwbG9kZRIRCglwYXR0ZXJuSWQYASABKAUiVAoIUm9vbUluZm8SDgoGcm9v",
+            "bUlkGAEgASgFEhAKCHJvb21OYW1lGAIgASgJEhEKCW1heFBsYXllchgDIAEo",
+            "BRITCgtwbGF5ZXJDb3VudBgEIAEoBSJVCgpPYmplY3RJbmZvEhAKCG9iamVj",
+            "dElkGAEgASgFEgwKBG5hbWUYAiABKAkSJwoHcG9zSW5mbxgDIAEoCzIWLlBy",
+            "b3RvY29sLlBvc2l0aW9uSW5mbyIqCgxQb3NpdGlvbkluZm8SDAoEcG9zWBgB",
+            "IAEoAhIMCgRwb3NZGAIgASgCKuMBCgVNc2dJZBIRCg1TX0VOVEVSX0xPQkJZ",
+            "EAASEQoNQ19DUkVBVEVfUk9PTRABEhcKE0NfUkVGUkVTSF9ST09NX0xJU1QQ",
+            "AhIXChNTX1JFRlJFU0hfUk9PTV9MSVNUEAMSEAoMQ19FTlRFUl9HQU1FEAQS",
+            "EAoMU19FTlRFUl9HQU1FEAUSEAoMU19MRUFWRV9HQU1FEAYSCwoHU19TUEFX",
+            "ThAHEg0KCVNfREVTUEFXThAIEgoKBkNfTU9WRRAJEgoKBlNfTU9WRRAKEgkK",
+            "BVNfRElFEAsSDQoJU19FWFBMT0RFEAxCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Q",
+            "cm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -63,7 +64,7 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Move), global::Google.Protobuf.Protocol.S_Move.Parser, new[]{ "ObjectId", "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Die), global::Google.Protobuf.Protocol.S_Die.Parser, new[]{ "ObjectId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Explode), global::Google.Protobuf.Protocol.S_Explode.Parser, new[]{ "PatternId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.RoomInfo), global::Google.Protobuf.Protocol.RoomInfo.Parser, new[]{ "RoomName", "MaxPlayer", "PlayerCount" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.RoomInfo), global::Google.Protobuf.Protocol.RoomInfo.Parser, new[]{ "RoomId", "RoomName", "MaxPlayer", "PlayerCount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ObjectInfo), global::Google.Protobuf.Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PositionInfo), global::Google.Protobuf.Protocol.PositionInfo.Parser, new[]{ "PosX", "PosY" }, null, null, null, null)
           }));
@@ -1738,6 +1739,7 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RoomInfo(RoomInfo other) : this() {
+      roomId_ = other.roomId_;
       roomName_ = other.roomName_;
       maxPlayer_ = other.maxPlayer_;
       playerCount_ = other.playerCount_;
@@ -1749,8 +1751,19 @@ namespace Google.Protobuf.Protocol {
       return new RoomInfo(this);
     }
 
+    /// <summary>Field number for the "roomId" field.</summary>
+    public const int RoomIdFieldNumber = 1;
+    private int roomId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RoomId {
+      get { return roomId_; }
+      set {
+        roomId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "roomName" field.</summary>
-    public const int RoomNameFieldNumber = 1;
+    public const int RoomNameFieldNumber = 2;
     private string roomName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string RoomName {
@@ -1761,7 +1774,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "maxPlayer" field.</summary>
-    public const int MaxPlayerFieldNumber = 2;
+    public const int MaxPlayerFieldNumber = 3;
     private int maxPlayer_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int MaxPlayer {
@@ -1772,7 +1785,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "playerCount" field.</summary>
-    public const int PlayerCountFieldNumber = 3;
+    public const int PlayerCountFieldNumber = 4;
     private int playerCount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int PlayerCount {
@@ -1795,6 +1808,7 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (RoomId != other.RoomId) return false;
       if (RoomName != other.RoomName) return false;
       if (MaxPlayer != other.MaxPlayer) return false;
       if (PlayerCount != other.PlayerCount) return false;
@@ -1804,6 +1818,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (RoomId != 0) hash ^= RoomId.GetHashCode();
       if (RoomName.Length != 0) hash ^= RoomName.GetHashCode();
       if (MaxPlayer != 0) hash ^= MaxPlayer.GetHashCode();
       if (PlayerCount != 0) hash ^= PlayerCount.GetHashCode();
@@ -1820,16 +1835,20 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (RoomId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RoomId);
+      }
       if (RoomName.Length != 0) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteString(RoomName);
       }
       if (MaxPlayer != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(MaxPlayer);
       }
       if (PlayerCount != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteInt32(PlayerCount);
       }
       if (_unknownFields != null) {
@@ -1840,6 +1859,9 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (RoomId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RoomId);
+      }
       if (RoomName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomName);
       }
@@ -1859,6 +1881,9 @@ namespace Google.Protobuf.Protocol {
     public void MergeFrom(RoomInfo other) {
       if (other == null) {
         return;
+      }
+      if (other.RoomId != 0) {
+        RoomId = other.RoomId;
       }
       if (other.RoomName.Length != 0) {
         RoomName = other.RoomName;
@@ -1880,15 +1905,19 @@ namespace Google.Protobuf.Protocol {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            RoomId = input.ReadInt32();
+            break;
+          }
+          case 18: {
             RoomName = input.ReadString();
             break;
           }
-          case 16: {
+          case 24: {
             MaxPlayer = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 32: {
             PlayerCount = input.ReadInt32();
             break;
           }

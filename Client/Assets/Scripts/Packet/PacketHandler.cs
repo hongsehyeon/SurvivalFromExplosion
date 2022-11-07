@@ -15,16 +15,20 @@ class PacketHandler
 
     public static void S_RefreshRoomListHandler(PacketSession session, IMessage packet)
     {
-        S_RefreshRoomList refreshRoomPacket = packet as S_RefreshRoomList;
+        S_RefreshRoomList roomListPacket = packet as S_RefreshRoomList;
 
-        // TODO : 룸 리스트 UI 새로고침
-        Debug.Log("새로고침");
+        LobbyScene lobbyScene = GameObject.Find("LobbyScene").GetComponent<LobbyScene>();
+
+        if (lobbyScene == null)
+            return;
+
+        lobbyScene.UpdateRoomList(roomListPacket);
     }
 
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
-        Debug.Log("게임 참가");
         S_EnterGame enterGamePacket = packet as S_EnterGame;
+        SceneManager.LoadScene("Game");
         Managers.Object.Add(enterGamePacket.Player, myPlayer: true);
     }
 
