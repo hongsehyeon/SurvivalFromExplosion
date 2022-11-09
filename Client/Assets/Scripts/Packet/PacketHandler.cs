@@ -9,7 +9,7 @@ class PacketHandler
     public static void S_EnterLobbyHandler(PacketSession session, IMessage packet)
     {
         S_EnterLobby enterLobbyPacket = packet as S_EnterLobby;
-
+        SceneManager.sceneLoaded += SpawnMyPlayer;
         SceneManager.LoadScene("Lobby");
     }
 
@@ -33,9 +33,9 @@ class PacketHandler
 
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
+        SceneManager.LoadScene("Game");
         S_EnterGame enterGamePacket = packet as S_EnterGame;
         Managers.Object.Add(enterGamePacket.Player, myPlayer: true);
-        SceneManager.LoadScene("Game");
     }
 
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
@@ -104,5 +104,3 @@ class PacketHandler
         }
     }
 }
-
-

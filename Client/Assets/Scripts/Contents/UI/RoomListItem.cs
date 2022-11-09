@@ -17,7 +17,7 @@ public class RoomListItem : MonoBehaviour
     public void OnClickRoom()
     {
         C_EnterGame enterGamePacket = new C_EnterGame();
-        enterGamePacket.RoomId = RoomInfo.RoomId + 1;
+        enterGamePacket.RoomId = RoomInfo.RoomId;
         Debug.Log($"{RoomInfo.RoomId}, {RoomInfo.RoomName}, {RoomInfo.MaxPlayer}");
         Managers.Network.Send(enterGamePacket);
     }

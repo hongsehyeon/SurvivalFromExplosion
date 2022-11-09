@@ -21,6 +21,7 @@ namespace Server.Game
 			lock (_lock)
 			{
 				gameRoom.RoomId = _roomId;
+				roomInfo.RoomId = _roomId;
 				gameRoom.RoomInfo = roomInfo;
 				_rooms.Add(_roomId, gameRoom);
 				_roomId++;

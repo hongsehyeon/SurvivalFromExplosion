@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public Vector2 MovePos = Vector2.zero;
 
+    public void SyncPos(Vector2 pos) { transform.position = pos; }
+
     protected virtual void Update()
     {
         MoveToMousePos();

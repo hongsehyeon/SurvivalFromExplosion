@@ -103,6 +103,8 @@ namespace Server.Game
 
             // TODO : 검증
 
+            player.Info.PosInfo = movePacket.PosInfo;
+
             // 다른 플레이어한테도 알려준다
             S_Move resMovePacket = new S_Move();
             resMovePacket.ObjectId = player.Info.ObjectId;
