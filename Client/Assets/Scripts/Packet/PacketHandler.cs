@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 class PacketHandler
 {
+    private static ObjectInfo _spawnPlayer;
+
     public static void S_EnterLobbyHandler(PacketSession session, IMessage packet)
     {
         S_EnterLobby enterLobbyPacket = packet as S_EnterLobby;
@@ -33,9 +35,21 @@ class PacketHandler
 
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
-        SceneManager.LoadScene("Game");
         S_EnterGame enterGamePacket = packet as S_EnterGame;
-        Managers.Object.Add(enterGamePacket.Player, myPlayer: true);
+        _spawnPlayer = enterGamePacket.Player;
+        SceneManager.LoadScene("Game");
+    }
+
+    // Spawn
+    static void SpawnMyPlayer(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (_spawnPlayer == null)
+            return;
+
+        if (scene.name == "Game")
+        {
+            Managers.Object.Add(_spawnPlayer, myPlayer: true);
+        }
     }
 
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
@@ -63,18 +77,18 @@ class PacketHandler
     public static void S_MoveHandler(PacketSession session, IMessage packet)
     {
         S_Move movePacket = packet as S_Move;
-        
+
         GameObject go = Managers.Object.FindById(movePacket.ObjectId);
         if (go == null)
             return;
-        
+
         if (Managers.Object.MyPlayer.Id == movePacket.ObjectId)
             return;
-        
+
         PlayerController pc = go.GetComponent<PlayerController>();
         if (pc == null)
             return;
-        
+
         pc.PosInfo = movePacket.PosInfo;
     }
 
