@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Google.Protobuf.Protocol;
 using Michsky.UI.ModernUIPack;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class LobbyScene : MonoBehaviour
 {
@@ -28,11 +28,6 @@ public class LobbyScene : MonoBehaviour
         Managers.Network.Send(createRoomPacket);
     }
 
-    public void OnClickRandomJoin()
-    {
-        
-    }
-
     public void OnClickRefreshRoomList()
     {
         C_RefreshRoomList roomListPacket = new C_RefreshRoomList();
@@ -55,5 +50,10 @@ public class LobbyScene : MonoBehaviour
             room.UpdateUI();
             roomItems.Add(roomItem);
         }
+    }
+
+    public void OnClickRank()
+    {
+        SceneManager.LoadScene("Rank");
     }
 }
