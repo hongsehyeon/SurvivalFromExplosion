@@ -9,7 +9,7 @@ public class ObjectManager
     public Exploder Exploder { get; set; }
     Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
 
-    public GameObject Add(ObjectInfo info, bool myPlayer = false)
+    public void Add(ObjectInfo info, bool myPlayer = false)
     {
         if (myPlayer)
         {
@@ -20,8 +20,6 @@ public class ObjectManager
             MyPlayer = go.GetComponent<MyPlayerController>();
             MyPlayer.Id = info.ObjectId;
             MyPlayer.PosInfo = info.PosInfo;
-
-            return go;
         }
         else
         {
@@ -33,8 +31,6 @@ public class ObjectManager
             pc.Id = info.ObjectId;
             pc.PosInfo = info.PosInfo;
             pc.SyncPos(new Vector2(info.PosInfo.PosX, info.PosInfo.PosY));
-
-            return go;
         }
     }
 
