@@ -6,12 +6,9 @@ using UnityEngine.SceneManagement;
 
 class PacketHandler
 {
-    private static ObjectInfo _spawnPlayer;
-
     public static void S_EnterLobbyHandler(PacketSession session, IMessage packet)
     {
         S_EnterLobby enterLobbyPacket = packet as S_EnterLobby;
-        SceneManager.sceneLoaded += SpawnMyPlayer;
         SceneManager.LoadScene("Lobby");
     }
 
@@ -36,20 +33,8 @@ class PacketHandler
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
         S_EnterGame enterGamePacket = packet as S_EnterGame;
-        _spawnPlayer = enterGamePacket.Player;
+        Managers.Object.Add(enterGamePacket.Player, true);
         SceneManager.LoadScene("Game");
-    }
-
-    // Spawn
-    static void SpawnMyPlayer(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        if (_spawnPlayer == null)
-            return;
-
-        if (scene.name == "Game")
-        {
-            Managers.Object.Add(_spawnPlayer, myPlayer: true);
-        }
     }
 
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
