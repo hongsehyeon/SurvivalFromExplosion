@@ -18,6 +18,7 @@ public class ObjectManager
             _objects.Add(info.ObjectId, go);
 
             MyPlayer = go.GetComponent<MyPlayerController>();
+
             MyPlayer.Id = info.ObjectId;
             MyPlayer.PosInfo = info.PosInfo;
 
