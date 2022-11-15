@@ -18,6 +18,8 @@ enum MsgId {
   S_MOVE = 10;
   S_DIE = 11;
   S_EXPLODE = 12;
+  C_CHAT = 13;
+  S_CHAT = 14;
 }
 
 message S_EnterLobby {
@@ -68,6 +70,15 @@ message S_Die {
 
 message S_Explode {
   int32 patternId = 1;
+}
+
+message C_Chat {
+  string text = 1;
+}
+
+message S_Chat {
+  int32 objectId = 1;
+  string text = 2;
 }
 
 message RoomInfo {

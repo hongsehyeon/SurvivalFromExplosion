@@ -102,4 +102,9 @@ class PacketHandler
             exploder.Explode(explodePacket.PatternId);
         }
     }
+
+    public static void S_ChatHandler(PacketSession session, IMessage packet)
+    {
+
+    }
 }
