@@ -105,6 +105,6 @@ class PacketHandler
 
     public static void S_ChatHandler(PacketSession session, IMessage packet)
     {
-
+        
     }
 }

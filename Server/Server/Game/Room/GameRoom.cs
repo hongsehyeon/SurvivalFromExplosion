@@ -122,6 +122,18 @@ namespace Server.Game
             _isExplode = false;
         }
 
+        public void HandleChat(Player player, C_Chat chatPacket)
+        {
+            if (player == null)
+                return;
+
+            S_Chat resChatPacket = new S_Chat();
+            resChatPacket.ObjectId = player.Info.ObjectId;
+            resChatPacket.Text = chatPacket.Text;
+
+            Broadcast(resChatPacket);
+        }
+
         public Player FindPlayer(Func<GameObject, bool> condition)
         {
             foreach (Player player in _players.Values)

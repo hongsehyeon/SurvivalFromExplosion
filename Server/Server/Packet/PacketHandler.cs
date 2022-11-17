@@ -60,4 +60,11 @@ class PacketHandler
 
 		room.Push(room.HandleMove, player, movePacket);
 	}
+
+	public static void C_ChatHandler(PacketHandler session, IMessage packet)
+	{
+		C_Chat chatPacket = packet as C_Chat;
+
+
+	}
 }
