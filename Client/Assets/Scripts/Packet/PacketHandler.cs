@@ -15,14 +15,11 @@ class PacketHandler
     public static void S_RefreshRoomListHandler(PacketSession session, IMessage packet)
     {
         S_RefreshRoomList roomListPacket = packet as S_RefreshRoomList;
+
         try
         {
-            LobbyScene lobbyScene = GameObject.Find("LobbyScene").GetComponent<LobbyScene>();
-
-            if (lobbyScene == null)
-                return;
-
-            lobbyScene.UpdateRoomList(roomListPacket);
+            if (GameObject.Find("LobbyScene").TryGetComponent(out LobbyScene lobbyScene))
+                lobbyScene.UpdateRoomList(roomListPacket);
         }
         catch
         {
@@ -85,11 +82,8 @@ class PacketHandler
         if (go == null)
             return;
 
-        PlayerController pc = go.GetComponent<PlayerController>();
-        if (pc != null)
-        {
+        if (go.TryGetComponent(out PlayerController pc))
             pc.OnDead();
-        }
     }
 
     public static void S_ExplodeHandler(PacketSession session, IMessage packet)
@@ -98,13 +92,29 @@ class PacketHandler
 
         Exploder exploder = Managers.Object.Exploder;
         if (exploder != null)
-        {
             exploder.Explode(explodePacket.PatternId);
-        }
     }
 
     public static void S_ChatHandler(PacketSession session, IMessage packet)
     {
-        
+        S_Chat chatPacket = packet as S_Chat;
+
+        GameObject go = Managers.Object.FindById(chatPacket.ObjectId);
+        if (go == null)
+            return;
+
+        if (Managers.Object.MyPlayer.Id == chatPacket.ObjectId)
+            return;
+
+        try
+        {
+            if (go.TryGetComponent(out PlayerController pc))
+                if (GameObject.Find("ChatManager").TryGetComponent(out ChatManager chatManager))
+                    chatManager.CreateChatLog(pc.Name, chatPacket.Text);
+        }
+        catch
+        {
+
+        }
     }
 }

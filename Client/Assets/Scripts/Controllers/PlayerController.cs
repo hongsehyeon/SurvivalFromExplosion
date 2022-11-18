@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int Id;
+    public string Name;
 
     PositionInfo _posInfo;
     public PositionInfo PosInfo
