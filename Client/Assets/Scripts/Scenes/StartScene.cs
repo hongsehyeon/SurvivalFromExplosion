@@ -11,6 +11,9 @@ public class StartScene : MonoBehaviour
 
     private void Start()
     {
+        // TEMP
+        PlayerPrefs.DeleteAll();
+
         if (PlayerPrefs.GetString("PlayerName") == "")
             StartCoroutine(ShowNamePanel());
         else
@@ -20,7 +23,7 @@ public class StartScene : MonoBehaviour
     public void OnClickStartButton()
     {
         string name = NameInputField.inputText.text;
-        if (SetPlayerName() == false)
+        if (SetPlayerName(name) == false)
         {
             // TODO : 닉네임 등록 실패 UI
             Debug.Log("닉네임 등록 실패");
@@ -43,7 +46,7 @@ public class StartScene : MonoBehaviour
         NamePanel.SetActive(true);
     }
 
-    private bool SetPlayerName()
+    private bool SetPlayerName(string name)
     {
         // TODO : 닉네임 유효성 검사
 

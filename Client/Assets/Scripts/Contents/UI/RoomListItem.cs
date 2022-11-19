@@ -18,6 +18,7 @@ public class RoomListItem : MonoBehaviour
     {
         C_EnterGame enterGamePacket = new C_EnterGame();
         enterGamePacket.RoomId = RoomInfo.RoomId;
+        enterGamePacket.Name = PlayerPrefs.GetString("PlayerName");
         Managers.Network.Send(enterGamePacket);
     }
 }

@@ -103,9 +103,6 @@ class PacketHandler
         if (go == null)
             return;
 
-        if (Managers.Object.MyPlayer.Id == chatPacket.ObjectId)
-            return;
-
         try
         {
             if (go.TryGetComponent(out PlayerController pc))

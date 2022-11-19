@@ -24,6 +24,7 @@ public class LobbyScene : MonoBehaviour
 
         C_CreateRoom createRoomPacket = new C_CreateRoom();
         createRoomPacket.RoomInfo = roomInfo;
+        createRoomPacket.Name = PlayerPrefs.GetString("PlayerName");
 
         Managers.Network.Send(createRoomPacket);
     }

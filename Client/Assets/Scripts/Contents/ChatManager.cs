@@ -15,12 +15,14 @@ public class ChatManager : MonoBehaviour
     {
         C_Chat chatPacket = new C_Chat();
         chatPacket.Text = ChatInputField.inputText.text;
+        ChatInputField.inputText.text = "";
+        Managers.Network.Send(chatPacket);
     }
 
     public void CreateChatLog(string name, string text)
     {
         GameObject go = Instantiate(ChatPrefab, ChatScrollContent);
-        if (go.TryGetComponent<TMP_Text>(out var chatText))
+        if (go.TryGetComponent(out TMP_Text chatText))
             chatText.text = $"{name} : {text}";
         ChatScrollViewRect.verticalNormalizedPosition = 0.0f;
     }

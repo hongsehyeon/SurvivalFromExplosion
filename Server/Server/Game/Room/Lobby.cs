@@ -29,7 +29,7 @@ namespace Server.Game
             session.Send(roomListPacket);
         }
 
-        public void CreateRoom(RoomInfo roomInfo, int sessionId)
+        public void CreateRoom(RoomInfo roomInfo, string playerName, int sessionId)
         {
             GameRoom newRoom = RoomManager.Instance.Add(roomInfo);
             newRoom.Push(newRoom.Init);
@@ -38,7 +38,7 @@ namespace Server.Game
             S_RefreshRoomList roomListPacket = MakeRoomListPacket();
             BroadCast(roomListPacket);
 
-            TryEnterGame(newRoom.RoomId, sessionId);
+            TryEnterGame(newRoom.RoomId, playerName, sessionId);
         }
 
         public void RefreshRoomList(int sessionId)
@@ -52,7 +52,7 @@ namespace Server.Game
             session.Send(roomListPacket);
         }
 
-        public void TryEnterGame(int roomId, int sessionId)
+        public void TryEnterGame(int roomId, string playerName, int sessionId)
         {
             GameRoom room = RoomManager.Instance.Find(roomId);
             
@@ -66,7 +66,7 @@ namespace Server.Game
 
             session.MyPlayer = ObjectManager.Instance.Add();
             {
-                session.MyPlayer.Info.Name = $"Player_{session.MyPlayer.Info.ObjectId}";
+                session.MyPlayer.Info.Name = playerName;
                 session.MyPlayer.Info.PosInfo.PosX = 0;
                 session.MyPlayer.Info.PosInfo.PosY = 0;
                 session.MyPlayer.Session = session;

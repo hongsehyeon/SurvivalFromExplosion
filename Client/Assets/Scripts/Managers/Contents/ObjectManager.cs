@@ -20,6 +20,7 @@ public class ObjectManager
             MyPlayer = go.GetComponent<MyPlayerController>();
 
             MyPlayer.Id = info.ObjectId;
+            MyPlayer.Name = info.Name;
             MyPlayer.PosInfo = info.PosInfo;
 
             UnityEngine.Object.DontDestroyOnLoad(go);
@@ -32,6 +33,7 @@ public class ObjectManager
 
             PlayerController pc = go.GetComponent<PlayerController>();
             pc.Id = info.ObjectId;
+            pc.Name = info.Name;
             pc.PosInfo = info.PosInfo;
             pc.SyncPos(new Vector2(info.PosInfo.PosX, info.PosInfo.PosY));
 

@@ -27,6 +27,7 @@ message S_EnterLobby {
 
 message C_CreateRoom {
   RoomInfo roomInfo = 1;
+  string name = 2;
 }
 
 message C_RefreshRoomList {
@@ -38,6 +39,7 @@ message S_RefreshRoomList {
 
 message C_EnterGame {
   int32 roomId = 1;
+  string name = 2;
 }
 
 message S_EnterGame {
