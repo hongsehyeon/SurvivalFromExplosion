@@ -5,11 +5,6 @@ public class MyPlayerController : PlayerController
 {
     Vector2 MousePos;
 
-    void LateUpdate()
-    {
-        //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-    }
-
     protected override void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -22,6 +17,7 @@ public class MyPlayerController : PlayerController
     {
         MousePos = Input.mousePosition;
         Vector2 movePos = Camera.main.ScreenToWorldPoint(MousePos);
+        movePos = new Vector2(Mathf.Clamp(movePos.x, -0.27f, 7.87f), Mathf.Clamp(movePos.y, -4.07f, 4.07f));
         MovePos = movePos;
 
         PosInfo.PosX = movePos.x;
