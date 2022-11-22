@@ -71,7 +71,7 @@ message S_Die {
 }
 
 message S_Explode {
-  int32 patternId = 1;
+  repeated int32 patternId = 1;
 }
 
 message C_Chat {

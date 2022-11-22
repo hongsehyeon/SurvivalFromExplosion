@@ -1,18 +1,75 @@
+using Google.Protobuf.Collections;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
+    public List<Explosion> Explosions = new List<Explosion>();
+
+    private byte[,] explosionPattern =
+    {
+        {
+            0, 0, 1, 0, 0,
+            0, 0, 1, 0, 0,
+            1, 1, 1, 1, 1,
+            0, 0, 1, 0, 0,
+            0, 0, 1, 0, 0
+        },
+        {
+            0, 1, 0, 1, 0,
+            0, 1, 0, 1, 0,
+            0, 1, 0, 1, 0,
+            0, 1, 0, 1, 0,
+            0, 1, 0, 1, 0
+        },
+        {
+            1, 0, 1, 0, 1,
+            1, 0, 1, 0, 1,
+            1, 0, 1, 0, 1,
+            1, 0, 1, 0, 1,
+            1, 0, 1, 0, 1
+        },
+        {
+            1, 1, 1, 1, 1,
+            0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1,
+            0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1
+        },
+        {
+            0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1,
+            0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1,
+            0, 0, 0, 0, 0
+        },
+        {
+            1, 1, 1, 1, 1,
+            1, 0, 0, 0, 1,
+            1, 0, 1, 0, 1,
+            1, 0, 0, 0, 1,
+            1, 1, 1, 1, 1
+        },
+        {
+            0, 1, 0, 1, 0,
+            1, 0, 1, 0, 1,
+            0, 1, 0, 1, 0,
+            1, 0, 1, 0, 1,
+            0, 1, 0, 1, 0
+        },
+    };
+
     private void Start()
     {
         Managers.Object.Exploder = this;
     }
 
-    public void Explode(int patternId)
+    public void Explode(RepeatedField<int> patternIds)
     {
-        Debug.Log("펑퍼퍼퍼ㅓ퍼퍼퍼퍼퍼퍼펑");
-
-        // TODO : 패턴에 따른 폭발 구현
+        foreach (int patternId in patternIds)
+        {
+            
+        }
     }
 }

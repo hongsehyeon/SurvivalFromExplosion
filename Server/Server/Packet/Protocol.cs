@@ -37,7 +37,7 @@ namespace Google.Protobuf.Protocol {
             "Y29sLlBvc2l0aW9uSW5mbyJDCgZTX01vdmUSEAoIb2JqZWN0SWQYASABKAUS",
             "JwoHcG9zSW5mbxgCIAEoCzIWLlByb3RvY29sLlBvc2l0aW9uSW5mbyIZCgVT",
             "X0RpZRIQCghvYmplY3RJZBgBIAEoBSIeCglTX0V4cGxvZGUSEQoJcGF0dGVy",
-            "bklkGAEgASgFIhYKBkNfQ2hhdBIMCgR0ZXh0GAEgASgJIigKBlNfQ2hhdBIQ",
+            "bklkGAEgAygFIhYKBkNfQ2hhdBIMCgR0ZXh0GAEgASgJIigKBlNfQ2hhdBIQ",
             "CghvYmplY3RJZBgBIAEoBRIMCgR0ZXh0GAIgASgJIlQKCFJvb21JbmZvEg4K",
             "BnJvb21JZBgBIAEoBRIQCghyb29tTmFtZRgCIAEoCRIRCgltYXhQbGF5ZXIY",
             "AyABKAUSEwoLcGxheWVyQ291bnQYBCABKAUiVQoKT2JqZWN0SW5mbxIQCghv",
@@ -1672,7 +1672,7 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public S_Explode(S_Explode other) : this() {
-      patternId_ = other.patternId_;
+      patternId_ = other.patternId_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1683,13 +1683,12 @@ namespace Google.Protobuf.Protocol {
 
     /// <summary>Field number for the "patternId" field.</summary>
     public const int PatternIdFieldNumber = 1;
-    private int patternId_;
+    private static readonly pb::FieldCodec<int> _repeated_patternId_codec
+        = pb::FieldCodec.ForInt32(10);
+    private readonly pbc::RepeatedField<int> patternId_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int PatternId {
+    public pbc::RepeatedField<int> PatternId {
       get { return patternId_; }
-      set {
-        patternId_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1705,14 +1704,14 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PatternId != other.PatternId) return false;
+      if(!patternId_.Equals(other.patternId_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (PatternId != 0) hash ^= PatternId.GetHashCode();
+      hash ^= patternId_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1726,10 +1725,7 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (PatternId != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(PatternId);
-      }
+      patternId_.WriteTo(output, _repeated_patternId_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1738,9 +1734,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (PatternId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PatternId);
-      }
+      size += patternId_.CalculateSize(_repeated_patternId_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1752,9 +1746,7 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
-      if (other.PatternId != 0) {
-        PatternId = other.PatternId;
-      }
+      patternId_.Add(other.patternId_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1766,8 +1758,9 @@ namespace Google.Protobuf.Protocol {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10:
           case 8: {
-            PatternId = input.ReadInt32();
+            patternId_.AddEntriesFrom(input, _repeated_patternId_codec);
             break;
           }
         }

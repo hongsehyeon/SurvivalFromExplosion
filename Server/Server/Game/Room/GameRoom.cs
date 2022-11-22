@@ -113,10 +113,12 @@ namespace Server.Game
             Broadcast(resMovePacket);
         }
 
-        public void Explode(int patternId)
+        public void Explode(int[] patternIds)
         {
             S_Explode explodePacket = new S_Explode();
-            explodePacket.PatternId = patternId;
+
+            foreach (int patternId in patternIds)
+                explodePacket.PatternId.Add(patternId);
 
             Broadcast(explodePacket);
             _isExplode = false;
