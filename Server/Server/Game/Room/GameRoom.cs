@@ -19,13 +19,22 @@ namespace Server.Game
             
         }
 
+        List<int> MakePattern()
+        {
+            Random rand = new Random();
+            List<int> patterns = new List<int>();
+            for (int i = 0; i < rand.Next(4, 7); i++)
+                patterns.Add(rand.Next(0, 7));
+            return patterns;
+        }
+
         public void Update()
         {
-            //if (!_isExplode)
-            //{
-            //    _isExplode = true;
-            //    PushAfter(3000, Explode, 1);
-            //}
+            if (!_isExplode && _players.Count > 1)
+            {
+                _isExplode = true;
+                PushAfter(20000, Explode, MakePattern());
+            }
 
             Flush();
         }
@@ -113,7 +122,7 @@ namespace Server.Game
             Broadcast(resMovePacket);
         }
 
-        public void Explode(int[] patternIds)
+        public void Explode(List<int> patternIds)
         {
             S_Explode explodePacket = new S_Explode();
 
