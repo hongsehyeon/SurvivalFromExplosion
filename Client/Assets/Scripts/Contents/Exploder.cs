@@ -6,7 +6,8 @@ using UnityEngine;
 public class Exploder : MonoBehaviour
 {
     public float NextExplosionTime = 1f;
-    public List<Explosion> Explosions = new List<Explosion>();
+    public List<GameObject> Previews = new List<GameObject>();
+    public List<GameObject> Explosions = new List<GameObject>();
 
     private byte[,] explosionPattern =
     {
@@ -70,22 +71,42 @@ public class Exploder : MonoBehaviour
 
     public void Explode(RepeatedField<int> patternIds)
     {
-        StartCoroutine(Exploding(patternIds));
+        StartCoroutine(Exploding(patternIds, true));
     }
 
-    private IEnumerator Exploding(RepeatedField<int> patternIds)
+    private IEnumerator Exploding(RepeatedField<int> patternIds, bool isPreview)
     {
-        for (int i = 0; i < patternIds.Count; i++)
+        if (isPreview)
         {
-            for (int j = 0; j < Explosions.Count; j++)
+            for (int i = 0; i < patternIds.Count; i++)
             {
-                if (explosionPattern[i, j] == 1)
+                for (int j = 0; j < Previews.Count; j++)
                 {
-                    Explosions[j].gameObject.SetActive(true);
+                    if (explosionPattern[patternIds[i], j] == 1)
+                    {
+                        Previews[j].SetActive(true);
+                    }
                 }
+
+                yield return nextExplosionTime;
             }
 
-            yield return nextExplosionTime;
+            StartCoroutine(Exploding(patternIds, true));
+        }
+        else
+        {
+            for (int i = 0; i < patternIds.Count; i++)
+            {
+                for (int j = 0; j < Explosions.Count; j++)
+                {
+                    if (explosionPattern[patternIds[i], j] == 1)
+                    {
+                        Explosions[j].SetActive(true);
+                    }
+                }
+
+                yield return nextExplosionTime;
+            }
         }
     }
 }
