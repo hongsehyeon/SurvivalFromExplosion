@@ -91,7 +91,7 @@ public class Exploder : MonoBehaviour
                 yield return nextExplosionTime;
             }
 
-            StartCoroutine(Exploding(patternIds, true));
+            StartCoroutine(Exploding(patternIds, false));
         }
         else
         {
