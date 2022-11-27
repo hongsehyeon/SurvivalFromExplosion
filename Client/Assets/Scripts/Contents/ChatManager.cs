@@ -10,12 +10,14 @@ public class ChatManager : MonoBehaviour
     public ScrollRect ChatScrollViewRect;
     public GameObject ChatPrefab;
     public CustomInputField ChatInputField;
+    public TMP_Text PlaceHolderText;
 
     public void SendChat()
     {
         C_Chat chatPacket = new C_Chat();
         chatPacket.Text = ChatInputField.inputText.text;
         ChatInputField.inputText.text = "";
+        PlaceHolderText.text = "채팅을 입력하세요.";
         Managers.Network.Send(chatPacket);
     }
 
