@@ -20,6 +20,12 @@ enum MsgId {
   S_EXPLODE = 12;
   C_CHAT = 13;
   S_CHAT = 14;
+  C_START_GAME = 15;
+  S_START_GAME = 16;
+  S_END_GAME = 17;
+  C_ADD_RANK = 18;
+  C_REFRESH_RANK_LIST = 19;
+  S_REFRESH_RANK_LIST = 20;
 }
 
 message S_EnterLobby {
@@ -83,6 +89,28 @@ message S_Chat {
   string text = 2;
 }
 
+message C_StartGame {
+}
+
+message S_StartGame {
+}
+
+message S_EndGame {
+  int32 winnerId = 1;
+}
+
+message C_AddRank {
+  string name = 1;
+  int32 totalScore = 2;
+}
+
+message C_RefreshRankList {
+}
+
+message S_RefreshRankList {
+  repeated RankInfo rankList = 1;
+}
+
 message RoomInfo {
   int32 roomId = 1;
   string roomName = 2;
@@ -99,4 +127,9 @@ message ObjectInfo {
 message PositionInfo {
   float posX = 1;
   float posY = 2;
+}
+
+message RankInfo {
+  string name = 1;
+  int32 score = 2;
 }

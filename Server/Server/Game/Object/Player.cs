@@ -9,6 +9,8 @@ namespace Server.Game
 	{
 		public ClientSession Session { get; set; }
 
+		public int Score { get; set; }
+
 		public override void OnDead()
 		{
 			base.OnDead();

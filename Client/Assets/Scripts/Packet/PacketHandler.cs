@@ -116,4 +116,19 @@ class PacketHandler
 
         }
     }
+
+    public static void S_StartGameHandler(PacketSession session, IMessage packet)
+    {
+        
+    }
+
+    public static void S_EndGameHandler(PacketSession session, IMessage packet)
+    {
+
+    }
+
+    public static void S_RefreshRankListHandler(PacketSession session, IMessage packet)
+    {
+
+    }
 }

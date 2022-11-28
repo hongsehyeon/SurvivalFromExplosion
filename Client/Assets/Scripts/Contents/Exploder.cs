@@ -83,6 +83,7 @@ public class Exploder : MonoBehaviour
         {
             PreviewCountDownUI.SetActive(true);
             yield return new WaitForSeconds(1);
+            PreviewCountDownUI.SetActive(false);
 
             for (int i = 0; i < patternIds.Count; i++)
             {
@@ -93,12 +94,14 @@ public class Exploder : MonoBehaviour
                 yield return nextExplosionTime;
             }
 
-            ExplosionCountDownUI.SetActive(true);
-            yield return new WaitForSeconds(3);
             StartCoroutine(Exploding(patternIds, false));
         }
         else
         {
+            ExplosionCountDownUI.SetActive(true);
+            yield return new WaitForSeconds(1);
+            ExplosionCountDownUI.SetActive(false);
+
             for (int i = 0; i < patternIds.Count; i++)
             {
                 for (int j = 0; j < Explosions.Count; j++)

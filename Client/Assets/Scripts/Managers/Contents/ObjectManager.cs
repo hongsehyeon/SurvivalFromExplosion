@@ -37,6 +37,16 @@ public class ObjectManager
             pc.PosInfo = info.PosInfo;
             pc.SyncPos(new Vector2(info.PosInfo.PosX, info.PosInfo.PosY));
 
+            try
+            {
+                GameObject.Find("GameScene").GetComponent<GameScene>();
+
+            }
+            catch
+            {
+
+            }
+
             UnityEngine.Object.DontDestroyOnLoad(go);
         }
     }

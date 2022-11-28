@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Protocol;
+using System.Linq;
 
 namespace Server.Game
 {
@@ -7,6 +8,7 @@ namespace Server.Game
     {
         public static Lobby Instance { get; } = new Lobby();
         Dictionary<int, ClientSession> _sessions = new Dictionary<int, ClientSession>();
+        Dictionary<string, int> _rankDic = new Dictionary<string, int>();
 
         public void Init()
         {
@@ -75,6 +77,21 @@ namespace Server.Game
             room.Push(room.EnterGame, session.MyPlayer);
 
             _sessions.Remove(sessionId);
+        }
+
+        public void AddRank(string name, int score)
+        {
+            _rankDic.Add(name, score);
+            _rankDic = SortDictionary(_rankDic);
+        }
+
+        Dictionary<string, int> SortDictionary(Dictionary<string, int> dict)
+        {
+            var sortVar = from item in dict
+                          orderby item.Value descending
+                          select item;
+
+            return sortVar.ToDictionary(x => x.Key, x => x.Value);
         }
 
         public ClientSession FindSession(int sessionId)

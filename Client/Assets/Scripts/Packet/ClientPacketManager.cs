@@ -42,7 +42,13 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SExplode, MakePacket<S_Explode>);
 		_handler.Add((ushort)MsgId.SExplode, PacketHandler.S_ExplodeHandler);		
 		_onRecv.Add((ushort)MsgId.SChat, MakePacket<S_Chat>);
-		_handler.Add((ushort)MsgId.SChat, PacketHandler.S_ChatHandler);
+		_handler.Add((ushort)MsgId.SChat, PacketHandler.S_ChatHandler);		
+		_onRecv.Add((ushort)MsgId.SStartGame, MakePacket<S_StartGame>);
+		_handler.Add((ushort)MsgId.SStartGame, PacketHandler.S_StartGameHandler);		
+		_onRecv.Add((ushort)MsgId.SEndGame, MakePacket<S_EndGame>);
+		_handler.Add((ushort)MsgId.SEndGame, PacketHandler.S_EndGameHandler);		
+		_onRecv.Add((ushort)MsgId.SRefreshRankList, MakePacket<S_RefreshRankList>);
+		_handler.Add((ushort)MsgId.SRefreshRankList, PacketHandler.S_RefreshRankListHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)
