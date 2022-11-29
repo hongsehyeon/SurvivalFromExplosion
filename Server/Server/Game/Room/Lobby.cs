@@ -61,7 +61,7 @@ namespace Server.Game
             if (room == null)
                 return;
 
-            if (room.RoomInfo.PlayerCount == room.RoomInfo.MaxPlayer)
+            if (room.RoomInfo.PlayerCount >= room.RoomInfo.MaxPlayer)
                 return;
 
             ClientSession session = FindSession(sessionId);

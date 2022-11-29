@@ -8,12 +8,13 @@ namespace Server.Game
         public int RoomId { get; set; }
         public RoomInfo RoomInfo { get; set; }
         Dictionary<int, Player> _players = new Dictionary<int, Player>();
+        public bool IsGameStarted { get; set; }
 
         bool _isExplode = false;
 
         public void Init()
         {
-            
+            IsGameStarted = false;
         }
 
         List<int> MakePattern()
@@ -27,7 +28,7 @@ namespace Server.Game
 
         public void Update()
         {
-            if (!_isExplode && _players.Count > 1)
+            if (!_isExplode && IsGameStarted)
             {
                 _isExplode = true;
                 PushAfter(20000, Explode, MakePattern());
@@ -44,6 +45,8 @@ namespace Server.Game
             Player player = gameObject as Player;
             if (player == null)
                 return;
+
+            RoomInfo.PlayerCount++;
             
             _players.Add(player.Id, player);
             player.Room = this;
@@ -81,6 +84,8 @@ namespace Server.Game
             Player player = null;
             if (_players.Remove(playerId, out player) == false)
                 return;
+
+            RoomInfo.PlayerCount--;
 
             player.Room = null;
 

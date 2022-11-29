@@ -27,4 +27,13 @@ public class MyPlayerController : PlayerController
         movePacket.PosInfo = PosInfo;
         Managers.Network.Send(movePacket);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Explosion"))
+        {
+            C_Die diePacket = new C_Die();
+            Managers.Network.Send(diePacket);
+        }
+    }
 }

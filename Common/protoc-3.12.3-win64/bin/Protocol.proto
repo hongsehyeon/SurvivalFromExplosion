@@ -16,16 +16,17 @@ enum MsgId {
   S_DESPAWN = 8;
   C_MOVE = 9;
   S_MOVE = 10;
-  S_DIE = 11;
-  S_EXPLODE = 12;
-  C_CHAT = 13;
-  S_CHAT = 14;
-  C_START_GAME = 15;
-  S_START_GAME = 16;
-  S_END_GAME = 17;
-  C_ADD_RANK = 18;
-  C_REFRESH_RANK_LIST = 19;
-  S_REFRESH_RANK_LIST = 20;
+  C_DIE = 11;
+  S_DIE = 12;
+  S_EXPLODE = 13;
+  C_CHAT = 14;
+  S_CHAT = 15;
+  C_START_GAME = 16;
+  S_START_GAME = 17;
+  S_END_GAME = 18;
+  C_ADD_RANK = 19;
+  C_REFRESH_RANK_LIST = 20;
+  S_REFRESH_RANK_LIST = 21;
 }
 
 message S_EnterLobby {
@@ -72,6 +73,9 @@ message S_Move {
   PositionInfo posInfo = 2;
 }
 
+message C_Die {
+}
+
 message S_Die {
   int32 objectId = 1;
 }
@@ -100,8 +104,7 @@ message S_EndGame {
 }
 
 message C_AddRank {
-  string name = 1;
-  int32 totalScore = 2;
+  RankInfo rankInfo = 1;
 }
 
 message C_RefreshRankList {
@@ -131,5 +134,5 @@ message PositionInfo {
 
 message RankInfo {
   string name = 1;
-  int32 score = 2;
+  int32 totalScore = 2;
 }

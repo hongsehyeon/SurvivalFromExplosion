@@ -7,7 +7,7 @@ public class GameScene : MonoBehaviour
 {
     public Transform InfoContent;
     public GameObject PlayerInfoPrefab;
-    public List<PlayerInfoItem> playerInfoList = new List<PlayerInfoItem>();
+    public Dictionary<int, PlayerInfoItem> PlayerInfos = new Dictionary<int, PlayerInfoItem>();
 
     private void Start()
     {
@@ -16,19 +16,26 @@ public class GameScene : MonoBehaviour
 
     public void GameStart()
     {
-
+        RegisterPlayers();
     }
 
-    public void AddPlayerInfo(string name)
+    public void RegisterPlayers()
     {
-        GameObject go = Instantiate(PlayerInfoPrefab, InfoContent);
-        PlayerInfoItem playerInfoItem = go.GetComponent<PlayerInfoItem>();
-        playerInfoItem.Name = name;
-        playerInfoList.Add(playerInfoItem);
+        Dictionary<int, GameObject> players = Managers.Object.Objects;
+
+        foreach (GameObject player in players.Values)
+        {
+            if (player.TryGetComponent(out PlayerController pc))
+            {
+                PlayerInfoItem item = Instantiate(PlayerInfoPrefab, InfoContent).GetComponent<PlayerInfoItem>();
+                item.Name = pc.Name;
+                item.Score = 0;
+            }
+        }
     }
 
     public void UpdateUI()
     {
-        
+
     }
 }

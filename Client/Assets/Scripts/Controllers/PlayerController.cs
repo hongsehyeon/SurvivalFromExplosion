@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     public virtual void OnDead()
     {
-
+        // TODO : Æø¹ß ÀÌÆåÆ® »ý¼º
+        gameObject.SetActive(false);
     }
 }

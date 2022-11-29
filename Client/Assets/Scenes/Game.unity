@@ -4191,7 +4191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e766a5fa11d1e4094a8191b5adedbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CounterText: {fileID: 0}
   PreviewCountDownUI: {fileID: 1400530619}
   ExplosionCountDownUI: {fileID: 832735931}
   NextExplosionTime: 1
@@ -4547,7 +4546,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InfoContent: {fileID: 0}
   PlayerInfoPrefab: {fileID: 0}
-  playerInfoList: []
 --- !u!1001 &1632701670
 PrefabInstance:
   m_ObjectHideFlags: 0
