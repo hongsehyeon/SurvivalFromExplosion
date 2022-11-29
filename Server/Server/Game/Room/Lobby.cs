@@ -34,8 +34,8 @@ namespace Server.Game
         public void CreateRoom(RoomInfo roomInfo, string playerName, int sessionId)
         {
             GameRoom newRoom = RoomManager.Instance.Add(roomInfo);
-            newRoom.Push(newRoom.Init);
             Program.TickRoom(newRoom);
+            newRoom.Push(newRoom.Init);
 
             S_RefreshRoomList roomListPacket = MakeRoomListPacket();
             BroadCast(roomListPacket);

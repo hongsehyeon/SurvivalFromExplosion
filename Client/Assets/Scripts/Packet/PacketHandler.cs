@@ -119,7 +119,15 @@ class PacketHandler
 
     public static void S_StartGameHandler(PacketSession session, IMessage packet)
     {
-        
+        try
+        {
+            if (GameObject.Find("GameScene").TryGetComponent(out GameScene gameScene))
+                gameScene.GameStart();
+        }
+        catch
+        {
+
+        }
     }
 
     public static void S_EndGameHandler(PacketSession session, IMessage packet)

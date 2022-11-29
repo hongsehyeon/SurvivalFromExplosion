@@ -10,29 +10,16 @@ namespace Server.Game
         Dictionary<int, Player> _players = new Dictionary<int, Player>();
         public bool IsGameStarted { get; set; }
 
-        bool _isExplode = false;
+        public int Round { get; private set; } = 0;
+        bool isExploded = false;
 
         public void Init()
         {
-            IsGameStarted = false;
-        }
-
-        List<int> MakePattern()
-        {
-            Random rand = new Random();
-            List<int> patterns = new List<int>();
-            for (int i = 0; i < rand.Next(4, 7); i++)
-                patterns.Add(rand.Next(0, 7));
-            return patterns;
+            
         }
 
         public void Update()
         {
-            if (!_isExplode && IsGameStarted)
-            {
-                _isExplode = true;
-                PushAfter(20000, Explode, MakePattern());
-            }
 
             Flush();
         }
@@ -124,15 +111,27 @@ namespace Server.Game
             Broadcast(resMovePacket);
         }
 
-        public void Explode(List<int> patternIds)
+        public void Explode()
         {
             S_Explode explodePacket = new S_Explode();
+            List<int> patterIds = MakePattern();
 
-            foreach (int patternId in patternIds)
+            foreach (int patternId in patterIds)
                 explodePacket.PatternId.Add(patternId);
 
             Broadcast(explodePacket);
-            _isExplode = false;
+
+            if (Round++ < 10)
+                PushAfter(20000, Explode);
+        }
+
+        List<int> MakePattern()
+        {
+            Random rand = new Random();
+            List<int> patterns = new List<int>();
+            for (int i = 0; i < rand.Next(4, 7); i++)
+                patterns.Add(rand.Next(0, 7));
+            return patterns;
         }
 
         public void HandleChat(Player player, C_Chat chatPacket)

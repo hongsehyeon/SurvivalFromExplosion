@@ -101,6 +101,11 @@ class PacketHandler
             return;
 
 		room.IsGameStarted = true;
+
+		S_StartGame startGamePacket = new S_StartGame();
+		room.Push(room.Broadcast, startGamePacket);
+
+		room.Push(room.Explode);
     }
 
 	public static void C_AddRank(PacketSession session, IMessage packet)

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInfoItem : MonoBehaviour
 {
-    public TMP_Text InfoText { get; set; }
+    public TMP_Text InfoText;
     public string Name { get; set; }
 
     private int score;
@@ -16,10 +16,5 @@ public class PlayerInfoItem : MonoBehaviour
             if (InfoText != null)
                 InfoText.text = $"{Name} : {score}";
         }
-    }
-
-    private void Start()
-    {
-        InfoText = GetComponent<TMP_Text>();
     }
 }
