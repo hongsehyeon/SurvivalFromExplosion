@@ -32,8 +32,8 @@ public class MyPlayerController : PlayerController
     {
         if (collision.CompareTag("Explosion"))
         {
-            C_Die diePacket = new C_Die();
-            Managers.Network.Send(diePacket);
+            //C_Die diePacket = new C_Die();
+            //Managers.Network.Send(diePacket);
         }
     }
 }

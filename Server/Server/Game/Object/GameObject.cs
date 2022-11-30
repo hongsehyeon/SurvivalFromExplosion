@@ -32,6 +32,8 @@ namespace Server.Game
 
     public class GameObject
 	{
+		public bool IsDead { get; set; }
+
 		public int Id
 		{
 			get { return Info.ObjectId; }
@@ -62,13 +64,10 @@ namespace Server.Game
 			diePacket.ObjectId = Id;
 			Room.Broadcast(diePacket);
 
-			GameRoom room = Room;
-			room.LeaveGame(Id);
-
 			PosInfo.PosX = 0;
 			PosInfo.PosY = 0;
 
-			room.EnterGame(this);
+			IsDead = true;
 		}
 	}
 }

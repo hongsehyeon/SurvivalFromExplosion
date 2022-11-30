@@ -111,6 +111,15 @@ namespace Server.Game
             Broadcast(resMovePacket);
         }
 
+        List<int> MakePattern()
+        {
+            Random rand = new Random();
+            List<int> patterns = new List<int>();
+            for (int i = 0; i < rand.Next(4, 7); i++)
+                patterns.Add(rand.Next(0, 7));
+            return patterns;
+        }
+
         public void Explode()
         {
             S_Explode explodePacket = new S_Explode();
@@ -123,15 +132,28 @@ namespace Server.Game
 
             if (Round++ < 10)
                 PushAfter(20000, Explode);
+            else
+                EndGame();
         }
 
-        List<int> MakePattern()
+        public void GetScore()
         {
-            Random rand = new Random();
-            List<int> patterns = new List<int>();
-            for (int i = 0; i < rand.Next(4, 7); i++)
-                patterns.Add(rand.Next(0, 7));
-            return patterns;
+            foreach (Player player in _players.Values)
+            {
+                if (player.IsDead != false)
+                {
+                    
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        public void EndGame()
+        {
+
         }
 
         public void HandleChat(Player player, C_Chat chatPacket)

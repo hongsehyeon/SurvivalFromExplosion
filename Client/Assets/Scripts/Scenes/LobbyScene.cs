@@ -57,4 +57,9 @@ public class LobbyScene : MonoBehaviour
     {
         SceneManager.LoadScene("Rank");
     }
+
+    public void OnClickExit()
+    {
+        Application.Quit();
+    }
 }
